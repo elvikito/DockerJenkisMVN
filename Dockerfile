@@ -8,8 +8,8 @@ ENV maven_version 3.3.9
 ENV MAVEN_HOME /opt/maven
 
 USER root
-RUN apk update \
-          && apk add -y wget curl openssh-server nano sudo
+RUN apk update
+RUN apk add wget curl openssh-server nano sudo
 
 RUN echo "alias nano='export TERM=xterm && nano'" >> /root/.bashrc
 
