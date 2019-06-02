@@ -8,8 +8,8 @@ ENV maven_version 3.3.9
 ENV MAVEN_HOME /opt/maven
 
 USER root
-RUN apt-get update \
-          && apt-get install -y wget curl openssh-server nano sudo
+RUN apk update \
+          && apk add -y wget curl openssh-server nano sudo
 
 RUN echo "alias nano='export TERM=xterm && nano'" >> /root/.bashrc
 
@@ -31,8 +31,7 @@ RUN tar xzf ${maven_tmp}  -C /opt/ \
 
 ENV PATH ${MAVEN_HOME}/bin:$PATH
 
-RUN  apt-get clean \
-          && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/man/?? /usr/share/man/??_*
+RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/man/?? /usr/share/man/??_*
 
 USER jenkins
 
